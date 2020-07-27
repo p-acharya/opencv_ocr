@@ -79,7 +79,10 @@ After OCR'ing the above image (with Kannada language hint):
 The Kannada transliteration is not as much of a problem due to the relatively limited number of accented latin characters used in the Kannada Transliteration Standard. And if the Kannada text is read correctly, then the Transliteration can simply be generated from that. 
 
 But not all challenges are out of the way yet:
-<img src="demo/pg191_excerpt.png" width="50%" height="80%"/> 
+
+<figure>
+   <img src="demo/pg191_excerpt.png" width="50%" height="80%"/> 
+</figure> 
 
 Because this is an etymological dictionary, it contains words from old Kannada, which includes letters that are no longer used in the modern Kannada alphabet. From wikipedia, 
 
