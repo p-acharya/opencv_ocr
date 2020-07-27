@@ -1,6 +1,6 @@
 # Kannada-English dictionary OCR 
 
-I have a pdf of an excellent Kannada-English etymological dictionary, a gem to any linguist or student studying Kannada. Unfortunately, the pdf is corrupted and therefore cannot be searched. For an Indian American trying to improve my Kannada in the year 2020, this was unacceptable! What good is an unsearchable dictionary? Surely, I couldn't be expected to scroll to the letter everytime I wanted to find a word! And thus, this project to OCR the entire dictionary was born! 
+I have a PDF of an excellent Kannada-English etymological dictionary, a gem to any linguist or student studying Kannada. Unfortunately, the pdf is corrupted and therefore cannot be searched. For an Indian American trying to improve my Kannada in the year 2020, this was unacceptable! What good is an unsearchable dictionary? Surely, I couldn't be expected to scroll to the letter everytime I wanted to find a word! And thus, this project to OCR the entire dictionary was born! 
 
 
 
