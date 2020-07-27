@@ -41,15 +41,11 @@ Next, I tried providing only Kannada as a language hint:
 Not looking too good, even with the language hint. What could be going wrong for it to fail the Kannada text recognition so miserably? So I tried recognizing a simpler text with just Kannada and English (basic latin), meaning no ipa (or transliteration). 
 
 <figure align="left">
-   <img src="demo/alternate_text.PNG" width="45%" height="80%"/> 
+   <img src="demo/alternate_text.PNG" width="50%" height="80%"/> 
     <figcaption> <i>mixed text with Kannada in one column and English in the other</i> </figcaption>
 </figure> 
 
-OCR with no language hint failed miserably, so I just included it by default. 
-```python
-//with Kannada language hint
-"'OJO AJIF3, anāyakatva [ǝne:jəkətve] n. (pol.) 1\nleaderless state, utter lack of leadership 2 chaos,\narchy [Sk.]\nan-\n'"
-```
+I tried the above excerpt with Kannada language hint added (no language hint failed miserably), and the results are reproduced below (I just added in the columnar formatting for easier reading).
 
 | Left (Kannada) | Right (text) |
 | ------------- | ------------- |
