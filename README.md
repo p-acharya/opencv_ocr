@@ -80,13 +80,14 @@ The Kannada transliteration is not as much of a problem due to the relatively li
 
 But not all challenges are out of the way yet:
 
-<figure>
+<figure align="left">
    <img src="demo/pg191_excerpt.png" width="50%" height="80%"/> 
 </figure> 
 
-Because this is an etymological dictionary, it contains words from old Kannada, which includes letters that are no longer used in the modern Kannada alphabet. From wikipedia, 
+Because this is an etymological dictionary, it contains words from old Kannada, which includes letters that are no longer used in the modern Kannada alphabet. 
 
-> Kannada literary works employed the letters ಱ (transliterated 'ṟ' or 'rh') and ೞ (transliterated 'ḻ', 'lh' or 'zh'), whose manner of articulation most plausibly could be   > akin to those in present-day Malayalam and Tamil. The letters dropped out of use in the 12th and 18th centuries, respectively. Later Kannada works replaced 'rh' and 'lh' with > ರ (ra) and ಳ (la) respectively.[13]
+> Kannada literary works employed the letters ಱ (transliterated 'ṟ' or 'rh') and ೞ (transliterated 'ḻ', 'lh' or 'zh'), whose manner of articulation most plausibly could be   > akin to those in present-day Malayalam and Tamil. The letters dropped out of use in the 12th and 18th centuries, respectively. Later Kannada works replaced 'rh' and 'lh' with > ರ (ra) and ಳ (la) respectively.
+> [Obsolete Kannada Letters](https://en.wikipedia.org/wiki/Kannada_script#Obsolete_Kannada_letters)
 
 Since google vision presumambly is trained on data from modern Kannada, it cannot recognize ಱ or ೞ! 
 When I tried the above excerpt, words where the second letter is ೞ, GCP failed miserably. 
