@@ -22,6 +22,8 @@ As an example, let's look at a single dictionary entry:
 
 Here we see there is adjacent Kannada (U+0C80-U+0CFF), Kannada Transliteration (ISO 15919), IPA (International Phonetic Alphabet - uses many different unicode blocks), and  English text (Basic Latin). That's four different adjacent scripts in one dictionary entry! This is truly a difficult problem to solve.
 
+### Approach
+
 I decided to use Google Vision to ocr, as it is probably the most state of the art mixed language text recognition at this point, and works even for languages often neglected in OCR (such as Kannada). 
 
 When I tried to OCR the above dictionary entry (ಅನಾಯಕತ್ವ), without providing any language hints, here was the output:
@@ -61,17 +63,15 @@ I tried the above excerpt with Kannada language hint added (no language hint fai
 | ಕುಡೀತೀನಿ.| |
 
 So it works quite well without the IPA! It must that which is screwing up my recognition!
+Fortunately for me, all the IPA text in the dictionary is contained within brackets (bracket notation is used to represent narrow transcription in Phonetics). Which means that a simple regex expression can be used to remove the IPA text for each dictionary entry.
 
+<figure align="left">
+   <img src="demo/removed_ipa.png" width="50%" height="80%"/> 
+    <figcaption> <i>The same entry with the IPA text removed</i> </figcaption>
+</figure> 
 
+After OCR'ing the above image (with Kannada language hint):
 
-
-
-
-
-
-
-
-
-
-
-
+```python
+"n.\n೧ಅನಾಯಕತ್ವ anayakatva\n(pol.) 1\nleaderless state, utter lack of leadership 2 chaos,\narchy [Sk.]\nan-\n"
+```
