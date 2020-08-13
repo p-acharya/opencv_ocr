@@ -10,7 +10,9 @@ I have a PDF of an excellent Kannada-English etymological dictionary, a gem to a
 </figure> 
 
 
-### Challenges
+### Challenges and Approach
+
+#### Infeasible to reconstruct the corrupted font table
 
 At first, I tried to reconstruct the corrupted font table but quickly saw this was infeasible (if a pdf has multiple fonts, like this 1200 page pdf does, means you have to reconstruct the font table for potentially hundereds of fonts, made even more difficult by the prescence of Latin, extended Latin, and Kannada characters). 
 
@@ -22,7 +24,7 @@ As an example, let's look at a single dictionary entry:
 
 Here we see there is adjacent Kannada (U+0C80-U+0CFF), Kannada Transliteration (ISO 15919), IPA (International Phonetic Alphabet - uses many different unicode blocks), and  English text (Basic Latin). That's four different adjacent scripts in one dictionary entry! This is truly a difficult problem to solve.
 
-### Approach
+#### Hyperrecognition of Latin Characters
 
 I decided to use Google Vision to ocr, as it is probably the most state of the art mixed language text recognition at this point, and works even for languages often neglected in OCR (such as Kannada). 
 
@@ -39,6 +41,8 @@ Next, I tried providing only Kannada as a language hint:
 //with Kannada language hint
 "'OJO AJIF3, anāyakatva [ǝne:jəkətve] n. (pol.) 1\nleaderless state, utter lack of leadership 2 chaos,\narchy [Sk.]\nan-\n'"
 ```
+
+#### IPA characters messing up Kannada text recognition
 
 Not looking too good, even with the language hint. What could be going wrong for it to fail the Kannada text recognition so miserably? So I tried recognizing a simpler text with just Kannada and English (basic latin), meaning no ipa (or transliteration). 
 
