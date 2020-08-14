@@ -24,9 +24,11 @@ As an example, let's look at a single dictionary entry:
 
 Here we see there is adjacent Kannada (U+0C80-U+0CFF), Kannada Transliteration (ISO 15919), IPA (International Phonetic Alphabet - uses many different unicode blocks), and  English text (Basic Latin). That's four different adjacent scripts in one dictionary entry! This is truly a difficult problem to solve.
 
+
 ### Approach 2: Perform OCR on the dictionary using Google Vision 
 
 I decided to use Google Vision to ocr, as it is probably the most state of the art mixed language text recognition at this point, and works even for languages often neglected in OCR (such as Kannada). 
+
 
 #### Hyperrecognition of Latin Characters
 
@@ -43,6 +45,7 @@ Next, I tried providing only Kannada as a language hint:
 //with Kannada language hint
 "'OJO AJIF3, anāyakatva [ǝne:jəkətve] n. (pol.) 1\nleaderless state, utter lack of leadership 2 chaos,\narchy [Sk.]\nan-\n'"
 ```
+
 
 #### IPA characters messing up Kannada text recognition
 
@@ -83,6 +86,7 @@ After OCR'ing the above image (with Kannada language hint), both the Kannada tex
 ```
 
 The Kannada transliteration is not as much of a problem due to the relatively limited number of extra latin characters used in the Kannada Transliteration Standard (as opposed to IPA which has all sorts of funky characters). And if the Kannada text is read correctly, then the Transliteration can simply be generated from that. 
+
 
 #### Poor Archaic Character Recognition
 
