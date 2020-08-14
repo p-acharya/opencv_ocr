@@ -82,6 +82,8 @@ After OCR'ing the above image (with Kannada language hint):
 
 The Kannada transliteration is not as much of a problem due to the relatively limited number of accented latin characters used in the Kannada Transliteration Standard. And if the Kannada text is read correctly, then the Transliteration can simply be generated from that. 
 
+#### Poor Archaic Character Recognition
+
 But not all challenges are out of the way yet:
 
 <figure align="left">
