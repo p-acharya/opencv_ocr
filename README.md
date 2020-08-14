@@ -10,9 +10,9 @@ I have a PDF of an excellent Kannada-English etymological dictionary, a gem to a
 </figure> 
 
 
-### Challenges and Approach
+## Challenges and Approach
 
-#### Infeasible to reconstruct the corrupted font table
+### Approach 1: Infeasible to reconstruct the corrupted font table
 
 At first, I tried to reconstruct the corrupted font table but quickly saw this was infeasible (if a pdf has multiple fonts, like this 1200 page pdf does, means you have to reconstruct the font table for potentially hundereds of fonts, made even more difficult by the prescence of Latin, extended Latin, and Kannada characters). 
 
@@ -24,9 +24,11 @@ As an example, let's look at a single dictionary entry:
 
 Here we see there is adjacent Kannada (U+0C80-U+0CFF), Kannada Transliteration (ISO 15919), IPA (International Phonetic Alphabet - uses many different unicode blocks), and  English text (Basic Latin). That's four different adjacent scripts in one dictionary entry! This is truly a difficult problem to solve.
 
-#### Hyperrecognition of Latin Characters
+### Approach 2: Perform OCR on the dictionary using Google Vision 
 
 I decided to use Google Vision to ocr, as it is probably the most state of the art mixed language text recognition at this point, and works even for languages often neglected in OCR (such as Kannada). 
+
+#### Hyperrecognition of Latin Characters
 
 When I tried to OCR the above dictionary entry (ಅನಾಯಕತ್ವ), without providing any language hints, here was the output:
 ```python
@@ -74,13 +76,13 @@ Fortunately for me, all the IPA text in the dictionary is contained within brack
     <figcaption> <i>The same entry with the IPA text removed</i> </figcaption>
 </figure> 
 
-After OCR'ing the above image (with Kannada language hint):
+After OCR'ing the above image (with Kannada language hint), both the Kannada text and the English definition have been recognized correctly:
 
 ```python
 "n.\n೧ಅನಾಯಕತ್ವ anayakatva\n(pol.) 1\nleaderless state, utter lack of leadership 2 chaos,\narchy [Sk.]\nan-\n"
 ```
 
-The Kannada transliteration is not as much of a problem due to the relatively limited number of accented latin characters used in the Kannada Transliteration Standard. And if the Kannada text is read correctly, then the Transliteration can simply be generated from that. 
+The Kannada transliteration is not as much of a problem due to the relatively limited number of extra latin characters used in the Kannada Transliteration Standard (as opposed to IPA which has all sorts of funky characters). And if the Kannada text is read correctly, then the Transliteration can simply be generated from that. 
 
 #### Poor Archaic Character Recognition
 
@@ -96,10 +98,9 @@ Because this is an etymological dictionary, it contains words from old Kannada, 
 > [Obsolete Kannada Letters](https://en.wikipedia.org/wiki/Kannada_script#Obsolete_Kannada_letters)
 
 Since google vision presumambly is trained on data from modern Kannada, it cannot recognize ಱ or ೞ! 
-When I tried the above excerpt, words where the second letter is ೞ, GCP failed miserably. 
+When I tried the above excerpt, words where the second letter is ೞ, GCP failed miserably. (As we see below, it either hyperrecognizes the Kannada text as Latin Text, or simply reads the archaic character incorrectly, in this case ೞ as ಬಿ)
 
 ```python
 "wego\n?weg 3 erata\n? ಎಬಿವು' eravu\nn. [move) pulling (C. (Kitt.)) [Ka.\nD504(a)]\nn. (move] 1 pulling, dragging\n2 spasm, cramp (My. (Kitt.)) [Ka. D504(a)].\n•ಎಬಿವು' eravu\n283) vt. (move] 1 to rub;\nto rub off or out; to smear gently 2 to stroke gently\n[Ka. D505].\n"
 ```
-Obviously something for google to improve on! 
-But for now, I have decided to try and use Tesseract to train a neaural net to recognize the IPA and Obsolete Kannada letters. This page will be updated as I go along. 
+Obviously something for google to improve on! However, Google Vision API doesn't accept custom characters. So for now, I have decided to try and use Tesseract to train a neaural net to recognize the IPA and Obsolete Kannada letters. This page will be updated as I go along. 
